@@ -10,10 +10,10 @@ Group Number:
 
 Group Members' Names (IDs):
 
-1. Abc Xyz (00000000)   -- Team Leader
-2.                      -- Member 1
-3.                      -- Member 2
-4.                      -- Member 3
+1.AHMED ADNAN MOHAMMED ABUALHNOUD (2200000997)-- Team Leader
+2.ALWALEED AHMAD ALDHAFIRI (2200000187)-- Member 1
+3.-- Member 2
+4.-- Member 3
 
 
 
@@ -47,7 +47,8 @@ tdata <- read_excel("teachers_data.xlsx")
 \textcolor{red}{(8 points)}
 
 ```{r tidy_data}
-#Add some code
+tdata <- tdata %>%
++ rename(Level = "المرحلة",Administrative_Region = "المنطقة الإدارية",sex = "الجنس",Education_Office = "مكتب التربية",Authority = "السلطة",Education_System = "نظام الدراسة",Education_Type = "نوع التعليم",School_Type = "نوع المدرسة",Saudi_Teacher = "معلم سعودي",Expat_Teacher = "معلم غير سعودي",Total_Teachers = "معلمين جملة",year = "السنة")
 ```
 
 Team Leader should *Knit, commit, and push changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
