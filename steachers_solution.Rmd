@@ -3,7 +3,7 @@ title: "Analysis of Teachers' Recruitment in Saudi Arabia Between 1437 and 1440"
 subtitle: "Data from Saudi Open Data Office"
 author: "Musab Isah"
 date: "6 March 2021"
-output: pdf_document
+output: html_document
 ---
 
 Group Number:
@@ -11,7 +11,7 @@ Group Number:
 Group Members' Names (IDs):
 
 1.AHMED ADNAN MOHAMMED ABUALHNOUD (2200000997)-- Team Leader
-2.ALWALEED AHMAD ALDHAFIRI (2200000187)-- Member 1
+2.ALWALEED AHMAD ALDHAFIRI (2200000187)--- Member 1
 3.-- Member 2
 4.-- Member 3
 
@@ -26,8 +26,13 @@ knitr::opts_chunk$set(echo = TRUE)
 Ensure you have the `tidyverse` and `readxl` packages installed by running the 2 lines of code below. Both the team leader and members should run the code below in the console of rstudio.
 
 ```{r libraries, echo=FALSE, message = FALSE}
+Sys.setlocale("LC_CTYPE", "arabic" )
 library(tidyverse)
 library(readxl)
+if(!require(ggpubr)){
+   install.packages("ggpubr")
+   library("ggpubr")
+}
 ```
 
 
@@ -47,8 +52,15 @@ tdata <- read_excel("teachers_data.xlsx")
 \textcolor{red}{(8 points)}
 
 ```{r tidy_data}
-tdata <- tdata %>%
-+ rename(Level = "المرحلة",Administrative_Region = "المنطقة الإدارية",sex = "الجنس",Education_Office = "مكتب التربية",Authority = "السلطة",Education_System = "نظام الدراسة",Education_Type = "نوع التعليم",School_Type = "نوع المدرسة",Saudi_Teacher = "معلم سعودي",Expat_Teacher = "معلم غير سعودي",Total_Teachers = "معلمين جملة",year = "السنة")
+colnames(tdata) <- c("ID", "Administrative_Region", "Levels",
+
+                     "Authority", "Education_Office", "Sex",
+
+                     "School_Type", "Education_Type",
+
+                     "School_System", "Saudis", "Expats",
+ 
+                     "Total_Numb_Teachers", "Year")
 ```
 
 Team Leader should *Knit, commit, and push changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
