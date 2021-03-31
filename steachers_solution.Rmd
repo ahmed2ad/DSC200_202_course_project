@@ -75,18 +75,19 @@ Next Team Member should *Pull the changes made by Team Leader before proceeding.
 (a) What are the different administrative_regions (Al-Mandaqah Al-idariyyah) found in the data?
 
 ```{r admin_regions}
-#Add some code
+tdata %>%
+  distinct(Administrative_Region)
 ```
 
-Comments about your answer:
+Comments about your answer:There are 13 different administrative regions
 
 (b) Based on your knowledge of the administrative regions in Saudi Arabia, is there any region that has not recruited any teacher during the period under review (1437 - 1440 Hijri)? List the Saudi regions shown in the data.
 
 ```{r not_recruited_admin_regions}
-#Add some code
+unique(tdata$Administrative_Region)
 ```
 
-Comments about your answer:
+Comments about your answer:All 13 region have teachers recruited and have teachers 
 
 The Team Member should *Knit, commit, and push changes to GitHub with an appropriate commit message.*
 
