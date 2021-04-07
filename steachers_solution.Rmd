@@ -101,19 +101,13 @@ The Next Team Member should *Pull the changes made by Member 1 before proceeding
 (a) Saudi Arabian education is divided into different stages/levels (Al-Marhala), list the different levels showed in the data in descDEADLINE: ENDing order of frequency. (4 points)
 
 ```{r study_levels}
-#Add some code
+tdata %>%
+  count(Levels) %>%
+  arrange(desc(n))
 ```
 
-Comments about your answer:
+Comments about your answer: most of the recruitments were done(المرحلة الابتدائية)by primary school  because the level appears 58,471 times in the dataset.
 
-(b) Which level recruit the most teachers? (4 points)
-
-
-```{r most_teachers}
-#Add some code
-```
-
-Comments about your answer:
 
 The Team Member should *Knit, commit, and push changes to GitHub with an appropriate commit message.*
 
