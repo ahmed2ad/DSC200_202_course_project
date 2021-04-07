@@ -137,7 +137,7 @@ Comments about your answer: we could see from the graph that the Riyadh region  
 non_saudi_teachers <- tdata %>%
   group_by(Administrative_Region) %>%
   summarise(Expats = sum(Expats))
-view(saudi_teachers)
+view(non_saudi_teachers)
 
 ggplot(non_saudi_teachers, aes(x = Administrative_Region, y =Expats)) +
 
@@ -151,10 +151,17 @@ Comments about your answer:Comments about your answer:The Riyadh region recruite
 (d) Plot the graph of region versus number of **all teachers** recruited over the period. (4 points)
 
 ```{r plot_admin_regions_all}
-#Add some code
+all_teachers <- tdata %>%
+  group_by(Administrative_Region) %>%
+  summarise(Total = sum(Total_Numb_Teachers))
+ggplot(all_teachers, aes(x = Administrative_Region, y = Total)) +
+
+ geom_point() +
+
+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-Comments about your answer:
+Comments about your answer: the graph show all teachers.
 
 The Team Member should *Knit, commit, and push changes to GitHub with an appropriate commit message.*
 
