@@ -113,23 +113,42 @@ The Team Member should *Knit, commit, and push changes to GitHub with an appropr
 
 The Next Team member should *Pull the changes made by Team Leader before proceeding.*
 
-(c) Plot the graph of region versus number of **Saudi** teachers recruited over the period. (4 points)
+(b) Plot the graph of region versus number of **Saudi** teachers recruited over the period. (4 points)
 
 ```{r plot_admin_regions_saudi}
-#Add some code
+saudi_teachers <- tdata %>%
+  group_by(Administrative_Region) %>%
+  summarise(Saudis = sum(Saudis))
+view(saudi_teachers)
+
+ggplot(saudi_teachers, aes(x = Administrative_Region, y = Saudis)) +
+
+ geom_point() +
+
+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
 ```
 
-Comments about your answer:
+Comments about your answer: we could see from the graph that the Riyadh region  recorded the most recruitment of Saudis followed closely by the Mecca region. North Hudud recruited the least number of teachers.
 
-(d) Plot the graph of region versus number of **Non-Saudi** teachers recruited over the period. (4 points)
+(c) Plot the graph of region versus number of **Non-Saudi** teachers recruited over the period. (4 points)
 
 ```{r plot_admin_regions_non-saudi}
-#Add some code
+non_saudi_teachers <- tdata %>%
+  group_by(Administrative_Region) %>%
+  summarise(Expats = sum(Expats))
+view(saudi_teachers)
+
+ggplot(non_saudi_teachers, aes(x = Administrative_Region, y =Expats)) +
+
+ geom_point() +
+
+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-Comments about your answer:
+Comments about your answer:Comments about your answer:The Riyadh region recruited more expatriate teachers than other regions. And Al Baha recruited the least number of teachers.
 
-(e) Plot the graph of region versus number of **all teachers** recruited over the period. (4 points)
+(d) Plot the graph of region versus number of **all teachers** recruited over the period. (4 points)
 
 ```{r plot_admin_regions_all}
 #Add some code
