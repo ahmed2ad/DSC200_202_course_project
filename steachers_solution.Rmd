@@ -11,7 +11,7 @@ Group Number:
 Group Members' Names (IDs):
 
 1.AHMED ADNAN MOHAMMED ABUALHNOUD (2200000997)-- Team Leader
-2.ALWALEED AHMAD ALDHAFIRI (2200000187)--- Member 1
+2.-- Member 1
 3.-- Member 2
 4.-- Member 3
 
@@ -172,21 +172,26 @@ The Team Member should *Knit, commit, and push changes to GitHub with an appropr
 
 The Next Team member should *Pull the changes made previously before proceeding.*
 
-(a) How many boys and how many girls schools are listed in the data? (4 points)
+(a) How many teachers are recruited in boys' and girls' schools?  (4 points)
 
 ```{r no_boys_girls}
-#Add some code
+tdata %>%
+  group_by(Sex) %>%
+  summarise(Total_recruit_teachers= sum(Total_Numb_Teachers))
 ```
 
-Comments about your answer:
+Comments about your answer:The number of teachers are recruited in boys les than girls .
 
 (b) Between boys and girls schools, which recruit more teachers? (4 points)
 
 ```{r recruitment_boys_girls}
-#Add some code
+recruitment_boys_girls <- tdata %>%
+  group_by(Sex) %>%
+  summarise(Total_recruit_teachers= sum(Total_Numb_Teachers))
+view(recruitment_boys_girls)
 ```
 
-Comments about your answer:
+Comments about your answer: We can see the teachers that were recruited in girls schools more than teachers recruited in boys schools.
 
 (c) What is the correlation between recruitment at boys schools and recruitment of girls schools? (4 points)
 
