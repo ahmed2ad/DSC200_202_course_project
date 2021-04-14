@@ -184,14 +184,7 @@ Comments about your answer:The number of teachers are recruited in boys les than
 
 (b) Between boys and girls schools, which recruit more teachers? (4 points)
 
-```{r recruitment_boys_girls}
-recruitment_boys_girls <- tdata %>%
-  group_by(Sex) %>%
-  summarise(Total_recruit_teachers= sum(Total_Numb_Teachers))
-view(recruitment_boys_girls)
-```
-
-Comments about your answer: We can see the teachers that were recruited in girls schools more than teachers recruited in boys schools.
+Comments about your answer: Girls' schools recruited more teachers, 1,166,895, than boys' schools, 954,028.
 
 (c) What is the correlation between recruitment at boys schools and recruitment of girls schools? (4 points)
 
