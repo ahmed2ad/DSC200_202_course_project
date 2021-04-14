@@ -189,7 +189,29 @@ Comments about your answer: Girls' schools recruited more teachers, 1,166,895, t
 (c) What is the correlation between recruitment at boys schools and recruitment of girls schools? (4 points)
 
 ```{r plot_correlation_boys_girls}
-#Add some code
+
+pivoted <- tdata %>%
+ group_by(Sex) %>%
+ mutate(row = row_number()) %>%
+ pivot_wider(
+  names_from = Sex,
+  values_from = Total_Numb_Teachers)
+colnames(pivoted)[13] <- "Boys"
+colnames(pivoted)[14] <- "Girls"
+pivoted <- pivoted %>%
+ select(row, Boys, Girls)
+my_fun <- function(x) x[!is.na(x)]
+pivoted <- pivoted %>%
+ group_by(row) %>%
+ summarise_all(funs(my_fun))
+ggscatter(pivoted, x = "Boys", y = "Girls",
+
+     add = "reg.line", conf.int = TRUE,
+
+     cor.coef = TRUE, cor.method = "pearson",
+
+     xlab = "Boys", ylab = "Girls")
+
 ```
 
 Comments about your answer:
@@ -206,7 +228,38 @@ The Next Team member should *Pull the changes made previously before proceeding.
 (a) How many teachers are recruited each year, 1437, 1438, 1439, and 1440? 
 
 ```{r teachers_per_year}
-#Add some code
+
+no_1437 <- tdata %>%
+
+ filter(Year == "1437") %>%
+
+ summarise(sum(Total_Numb_Teachers))
+
+cat(paste0("1437 Recruits: `", no_1437, "`\n"))
+
+no_1438 <- tdata %>%
+
+ filter(Year == "1438") %>%
+
+ summarise(sum(Total_Numb_Teachers))
+
+cat(paste0("1438 Recruits: `", no_1438, "`\n"))
+
+no_1439 <- tdata %>%
+
+ filter(Year == "1439") %>%
+
+ summarise(sum(Total_Numb_Teachers))
+
+cat(paste0("1439 Recruits: `", no_1439, "`\n"))
+
+no_1440 <- tdata %>%
+
+ filter(Year == "1440") %>%
+
+ summarise(sum(Total_Numb_Teachers))
+
+cat(paste0("1440 Recruits: `", no_1440, "`\n"))
 ```
 
 Comments about your answer:
@@ -214,15 +267,13 @@ Comments about your answer:
 (b) Which region recruited the most teachers in each of the years under review? (4 points)
 
 ```{r teachers_per_region}
-#Add some code
-```
+most_teachers <- tdata %>%
+ group_by(Administrative_Region, Year) %>%
+ summarise(Total = sum(Total_Numb_Teachers)) %>%
+ arrange(Year, Total)
+most_teachers <- most_teachers[c(13, 26, 39, 52),]
+most_teachers
 
-Comments about your answer:
-
-(c) Plot the graph of number of teachers recruited vs the number of schools in an administrative region? What type or relationship exist between the two variables? (4 points)
-
-```{r plot_teachers_administrative_regions}
-#Add some code
 ```
 
 Comments about your answer:
